@@ -17,10 +17,7 @@ public class PacketEventsPacketListener extends PacketListenerAbstract {
     @Override
     public void onPacketReceive(PacketReceiveEvent event) {
         Player player = (Player) event.getPlayer();
-        //Cross-platform user
-        User user = event.getUser();
         if (event.getPacketType() == PacketType.Play.Client.KEEP_ALIVE) {
-            //WrapperPlayClientKeepAlive keepAlive = new WrapperPlayClientKeepAlive(event);
             if (BoomedMap.containsKey(player)){
                 event.setCancelled(true);
             }
@@ -55,7 +52,6 @@ public class PacketEventsPacketListener extends PacketListenerAbstract {
     @Override
     public void onPacketSend(PacketSendEvent event) {
         Player player = (Player) event.getPlayer();
-        //Cross-platform user
         User user = event.getUser();
         if (event.getPacketType() == PacketType.Play.Server.KEEP_ALIVE) {
             //WrapperPlayServerKeepAlive keepAlive = new WrapperPlayServerKeepAlive(event);

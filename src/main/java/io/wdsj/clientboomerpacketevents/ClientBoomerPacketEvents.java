@@ -98,7 +98,6 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
                                 sender.sendMessage("Current banned players:\n" + imsg);
                             }
                         } catch (SQLException e) {
-                            // 如果发生异常，输出错误信息
                             e.printStackTrace();
                         }
                     } else {
@@ -118,16 +117,13 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
             if (banFeature) {
                 if (args.length == 1) {
                     if (sender.hasPermission("clientboomer.boomban.use") || sender instanceof ConsoleCommandSender) {
-                        // 获取发送者和目标玩家的对象和名字
                         Player targetPlayer = Bukkit.getPlayer(args[0]);
                         String targetName = args[0];
                         String lowerTargetName = targetName.toLowerCase();
-                        // 如果目标玩家不存在，就发送一条消息给发送者
                         if (targetPlayer == null) {
                             sender.sendMessage(ChatColor.RED + "Player not found.");
                             return true;
                         }
-                        // 如果目标玩家是发送者自己，就发送一条消息给发送者
                         if (targetPlayer == sender) {
                             sender.sendMessage(ChatColor.RED + "You can't boomban yourself!");
                             return true;
@@ -144,7 +140,6 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
                                 BoomedMap.put(targetPlayer, "boombanned");
                             }
                         } catch (SQLException e) {
-                            // 如果发生异常，输出错误信息
                             e.printStackTrace();
                         }
                         return true;
@@ -165,23 +160,18 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
             if (banFeature) {
                 if (args.length == 1) {
                     if (sender.hasPermission("clientboomer.boomunban.use") || sender instanceof ConsoleCommandSender) {
-                        // 获取发送者和目标玩家的对象和名字
                         String targetName = args[0];
                         Player targetPlayer = Bukkit.getPlayer(args[0]);
                         String lowerTargetName = targetName.toLowerCase();
-                        // 获取数据库连接
                         try (Connection connection = dataSource.getConnection()) {
-                            // 删除一条记录，根据目标玩家名，如果记录不存在，就不会报错
                             try (Statement statement = connection.createStatement()) {
                                 statement.executeUpdate("DELETE FROM boomban WHERE player = '" + lowerTargetName + "';");
                                 BoomedMap.remove(targetPlayer);
                                 sender.sendMessage(ChatColor.GREEN + "Successfully boomunbanned " + targetName + "!");
                             } catch (SQLException e) {
-                                // 如果发生异常，输出错误信息
                                 e.printStackTrace();
                             }
                         } catch (SQLException e) {
-                            // 如果发生异常，输出错误信息
                             e.printStackTrace();
                         }
                         return true;
@@ -192,7 +182,6 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
             } else {
                 sender.sendMessage(ChatColor.RED + "This feature is disabled.");
             }
-            // 如果命令不符合要求，就返回假，表示命令执行失败
             return true;
         }
 
@@ -265,7 +254,6 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
                 try (Connection connection = dataSource.getConnection()) {
                     try (Statement statement = connection.createStatement();
                          ResultSet rs = statement.executeQuery("SELECT * FROM boomban WHERE player = '" + lowerName + "'")){
-                        // if result is not empty;
                         if (!rs.isClosed() && rs.getString("player").equals(lowerName)) {
                             Bukkit.getScheduler().runTask(this, () -> {
                                 sendExplosionPacket(player);
