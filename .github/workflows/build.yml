@@ -20,3 +20,8 @@ jobs:
           cache: 'maven'
       - name: Build
         run: mvn -V -B clean package --file pom.xml
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: Download
+          path: ./target/ClientBoomer-PacketEvents-1.2.jar
