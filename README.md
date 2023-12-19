@@ -1,8 +1,5 @@
 # ClientBoomer
 A packet-based bukkit plugin that allows you to crash/ban the clients of cheaters
-<p align="center">
-  <img src="https://img.shields.io/github/languages/code-size/HaHaWTH/ClientBoomer.svg" alt="Code size"/>
-</p>
 
 ## How to use
 1. Put the jar file in your plugins folder
