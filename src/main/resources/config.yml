@@ -1,0 +1,11 @@
+#Main config file of ClientBoomer-PacketEvents
+
+#顶级折磨，尝试崩端后拒绝处理客户端keepAlive包并让服务器拒绝发送keepAlive(冻结玩家活动)
+#Freeze players
+zeroBPM: true
+#是否在控制台输出消息
+#Send console output or not
+consoleOutput: true
+#封禁功能,包含/boomban /boomunban和/boombanlist
+#Ban feature
+banFeature: false

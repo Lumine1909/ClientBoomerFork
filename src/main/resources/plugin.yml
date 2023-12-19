@@ -1,0 +1,43 @@
+name: ClientBoomer-PacketEvents
+version: '${project.version}'
+main: io.wdsj.clientboomerpacketevents.ClientBoomerPacketEvents
+api-version: '1.13'
+authors: [HeyWTF_IS_That]
+softdepend:
+  - ProtocolLib
+  - ProtocolSupport
+  - ViaVersion
+  - ViaBackwards
+  - ViaRewind
+  - Geyser-Spigot
+commands:
+  boom:
+    description: Crash player client
+    usage: /boom <player>
+    permission: clientboomer.boom.use
+  boomban:
+    description: Ban player
+    usage: /boomban <player>
+    permission: clientboomer.boomban.use
+  boomunban:
+    description: Unban player
+    usage: /boomunban <player>
+    permission: clientboomer.boomunban.use
+  boombanlist:
+    description: List banned players
+    usage: /boombanlist
+    permission: clientboomer.boombanlist.use
+permissions:
+  clientboomer.boom.use:
+    description: for boom
+    default: op
+  clientboomer.boomban.use:
+    description: for boomban
+    default: op
+  clientboomer.boomunban.use:
+    description: for boomunban
+    default: op
+  clientboomer.boombanlist.use:
+    description: for boombanlist
+    default: op
+
