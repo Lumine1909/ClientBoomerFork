@@ -19,3 +19,7 @@ A: For better performance. SQLite is a fast and lightweight database that is wid
 Q: Where can I use this plugin?
 
 A: You can use this plugin with some anti-cheat plugins such as Vulcan.
+
+<p>
+  <img src="maore.png" alt="梦老湿"/>
+</p>
