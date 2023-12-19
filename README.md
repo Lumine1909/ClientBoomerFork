@@ -44,5 +44,8 @@ banFeature: false
 ## Statistics
 ![Graph](https://bstats.org/signatures/bukkit/ClientBoomer.svg)
 ## Dependencies using
-- [PacketEvents](https://github.com/retrooper/packetevents)
+- [retrooper/PacketEvents](https://github.com/retrooper/packetevents)
 - [bStats](https://bstats.org/)
+
+PSA:
+We don't steal code from SuperBan!
