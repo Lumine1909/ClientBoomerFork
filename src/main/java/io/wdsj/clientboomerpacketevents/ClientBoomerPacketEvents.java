@@ -248,7 +248,7 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
         BoomedMap.remove(player);
     }
 
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
         if (banFeature) {
             Player player = event.getPlayer();
