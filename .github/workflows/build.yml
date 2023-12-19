@@ -1,11 +1,10 @@
-name: "Jvav CI (Really)"
+name: Jvav CI (Really)
 
 on:
   push:
   pull_request:
     branches:
       - main
-
 jobs:
   Build:
     strategy:
@@ -21,12 +20,3 @@ jobs:
           cache: 'maven'
       - name: Build
         run: mvn -V -B clean package --file pom.xml
-  release:
-    steps:
-      - name: Publish release
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: false
-          title: "Latest Release"
