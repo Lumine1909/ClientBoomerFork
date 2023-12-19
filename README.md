@@ -42,9 +42,9 @@ banFeature: false
 ```
 ## Statistics
 ![Graph](https://bstats.org/signatures/bukkit/ClientBoomer.svg)
-## Dependencies using
-- [retrooper/PacketEvents](https://github.com/retrooper/packetevents)
-- [bStats](https://bstats.org/)
+
+## All you want to know about the plugin
+[Detailed_Info.md](https://github.com/HaHaWTH/ClientBoomer/blob/main/detailed_info.md)
 
 PSA:
 We don't steal code from SuperBan!
