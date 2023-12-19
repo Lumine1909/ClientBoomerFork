@@ -2,7 +2,7 @@
 
 Q: How does the plugin work?
 
-A: The plugin works by using packetevents to listen for packets that are sent to the server.
+A: The plugin works by using packetevents to listen to packets that are sent to the server.
 
 Q: How can the server-sided plugin crash the client?
 
