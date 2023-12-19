@@ -20,6 +20,6 @@ Q: Where can I use this plugin?
 
 A: You can use this plugin with some anti-cheat plugins such as Vulcan.
 
-<p>
+<p align="center"> 
   <img src="maore.png" alt="梦老湿"/>
 </p>
