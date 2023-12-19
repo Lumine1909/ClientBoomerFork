@@ -14,8 +14,7 @@ A packet-based bukkit plugin that allows you to crash/ban the clients of cheater
 
 `/boomunban <player>` - Unban the client of the specified player
 
-`/boombanlist` - List all the banned players
-
+`/boombanlist` - List all the banned players (How does the banlist store? - In SQLite db)
 
 ## Permissions
 
