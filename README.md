@@ -44,5 +44,5 @@ banFeature: false
 ## Statistics
 ![Graph](https://bstats.org/signatures/bukkit/ClientBoomer.svg)
 ## Dependencies using
-- PpacketEvents](https://github.com/retrooper/packetevents)
+- [PacketEvents](https://github.com/retrooper/packetevents)
 - [bStats](https://bstats.org/)
