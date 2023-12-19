@@ -2,9 +2,10 @@
 A packet-based bukkit plugin that allows you to crash/ban the clients of cheaters
 (Compatible with spigot 1.8.8~1.20.4)
 ## How to use
-1. Put the jar file in your plugins folder
-2. Restart your server
-3. Configure the plugin via config.yml
+1. Download the latest version of ClientBoomer-PacketEvents from Actions
+2. Put the jar file in your plugins folder
+3. Restart your server
+4. Configure the plugin via config.yml
 
 ## Commands
 
