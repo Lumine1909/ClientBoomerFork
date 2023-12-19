@@ -14,4 +14,4 @@ A: No. This plugin is very lightweight and does not affect the server performanc
 
 Q: Why do you use SQLite to store the ban list instead of YAML?
 
-A: Performance. SQLite is a fast and lightweight database that is widely used in many projects. YAML is a human-readable data-serialization format, but when more and more players get banned, YAML storage method will lag the server.
+A: For better performance. SQLite is a fast and lightweight database that is widely used in many projects. YAML is a human-readable data-serialization format, but when more and more players get banned, YAML storage method will lag the server.
