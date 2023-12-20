@@ -170,7 +170,9 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
                             try (Statement statement = connection.createStatement()) {
                                 statement.executeUpdate("DELETE FROM boomban WHERE player = '" + lowerTargetName + "';");
                                 BoomedMap.remove(targetPlayer);
-                                sender.sendMessage(ChatColor.GREEN + "Successfully boomunbanned " + targetName + "!");
+                                if (sender instanceof Player || consoleOutPut) {
+                                    sender.sendMessage(ChatColor.GREEN + "Successfully boomunbanned " + targetName + "!");
+                                }
                             } catch (SQLException e) {
                                 e.printStackTrace();
                             }
