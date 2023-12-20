@@ -49,7 +49,7 @@ banFeature: false
 ![Graph](https://bstats.org/signatures/bukkit/ClientBoomer.svg)
 
 ## All you want to know about the plugin
-[Detailed_Info.md](https://github.com/HaHaWTH/ClientBoomer/blob/main/detailed_info.md)
+[Detailed_Info.md](./detailed_info.md)
 
 PSA:
 We don't steal code from SuperBan!
