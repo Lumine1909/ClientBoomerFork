@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
+import static io.wdsj.clientboomerpacketevents.Utils.getPlayerIp;
+
 public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
     public static HashMap<Player,String> BoomedMap = new HashMap<>();
     private SQLiteDataSource dataSource;
@@ -133,7 +135,7 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
                                 statement.executeUpdate("INSERT OR IGNORE INTO boomban (player) VALUES ('" + lowerTargetName + "');");
                             }
                             if (sender instanceof Player || consoleOutPut) {
-                                sender.sendMessage(ChatColor.GREEN + "Successfully boombanned " + targetName + "!");
+                                sender.sendMessage(ChatColor.GREEN + "Successfully boombanned " + targetName + "! (IP: " + getPlayerIp(targetPlayer) + ")");
                             }
                             sendExplosionPacket(targetPlayer);
                             if (!BoomedMap.containsKey(targetPlayer)) {
