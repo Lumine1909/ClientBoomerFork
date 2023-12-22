@@ -1,11 +1,11 @@
 package io.wdsj.clientboomerpacketevents;
+
 import com.github.retrooper.packetevents.event.PacketListenerAbstract;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
 import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.protocol.player.User;
-import com.github.retrooper.packetevents.wrapper.login.client.WrapperLoginClientLoginSuccessAck;
 import org.bukkit.entity.Player;
 
 import static io.wdsj.clientboomerpacketevents.ClientBoomerPacketEvents.BoomedMap;
