@@ -5,18 +5,24 @@ import com.github.retrooper.packetevents.event.PacketReceiveEvent;
 import com.github.retrooper.packetevents.event.PacketSendEvent;
 import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.protocol.player.User;
+import com.github.retrooper.packetevents.wrapper.login.client.WrapperLoginClientLoginSuccessAck;
 import org.bukkit.entity.Player;
 
 import static io.wdsj.clientboomerpacketevents.ClientBoomerPacketEvents.BoomedMap;
+import static org.bukkit.Bukkit.getPlayer;
 
 public class PacketEventsPacketListener extends PacketListenerAbstract {
     public PacketEventsPacketListener() {
         super(PacketListenerPriority.HIGHEST);
     }
+    private Player user2player(User user){
+        return getPlayer(user.getName());
+    }
 
     @Override
     public void onPacketReceive(PacketReceiveEvent event) {
         Player player = (Player) event.getPlayer();
+        User user = event.getUser();
         if (event.getPacketType() == PacketType.Play.Client.KEEP_ALIVE) {
             if (BoomedMap.containsKey(player)){
                 event.setCancelled(true);

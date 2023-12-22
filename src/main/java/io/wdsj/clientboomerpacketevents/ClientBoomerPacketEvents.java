@@ -37,7 +37,7 @@ import static io.wdsj.clientboomerpacketevents.Utils.getPlayerIp;
 
 public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
     public static HashMap<Player,String> BoomedMap = new HashMap<>();
-    private SQLiteDataSource dataSource;
+    public static SQLiteDataSource dataSource;
     private Boolean consoleOutPut;
     private Boolean zeroBPM;
     private Boolean banFeature;
@@ -223,11 +223,12 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
         double z = location.getZ();
         WrapperPlayServerExplosion explosionPacket = new WrapperPlayServerExplosion(new Vector3d(x, y, z), Float.POSITIVE_INFINITY,
                 new ArrayList<>(), new Vector3f(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY));
-        for (int i = 0; i < 3; i++) { //prevent packet-loss
-            Bukkit.getScheduler().runTask(this, () -> {
+         //prevent packet-loss
+        Bukkit.getScheduler().runTask(this, () -> {
+            for (int i = 0; i < 3; i++) {
                 PacketEvents.getAPI().getPlayerManager().sendPacket(player, explosionPacket);
-            });
-        }
+            }
+        });
     }
 
     private void createConfig() {
