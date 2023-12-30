@@ -5,6 +5,8 @@ on:
   pull_request:
     branches:
       - main
+env:
+  branch: 'main'
 jobs:
   Build:
     strategy:
@@ -27,6 +29,7 @@ jobs:
           path: ./target/ClientBoomer-PacketEvents-1.2.jar
       - name: Release Artifacts (Latest)
         uses: marvinpinto/action-automatic-releases@latest
+        if: github.ref_name == env.branch
         with:
           title: "latest"
           automatic_release_tag: latest
