@@ -27,12 +27,3 @@ jobs:
         with:
           name: Download
           path: ./target/ClientBoomer-PacketEvents-1.2.jar
-      - name: Release Artifacts (Latest)
-        uses: marvinpinto/action-automatic-releases@latest
-        if: github.ref_name == env.branch
-        with:
-          title: "latest"
-          automatic_release_tag: latest
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          files: ./target/ClientBoomer-PacketEvents-1.2.jar
-          prerelease: false
