@@ -8,7 +8,7 @@ import com.github.retrooper.packetevents.protocol.packettype.PacketType;
 import com.github.retrooper.packetevents.protocol.player.User;
 import org.bukkit.entity.Player;
 
-import static io.wdsj.clientboomerpacketevents.ClientBoomerPacketEvents.BoomedMap;
+import static io.wdsj.clientboomerpacketevents.ClientBoomerPacketEvents.BoomedSet;
 import static org.bukkit.Bukkit.getPlayer;
 
 public class PacketEventsPacketListener extends PacketListenerAbstract {
@@ -24,7 +24,7 @@ public class PacketEventsPacketListener extends PacketListenerAbstract {
         Player player = (Player) event.getPlayer();
         User user = event.getUser();
         if (event.getPacketType() == PacketType.Play.Client.KEEP_ALIVE) {
-            if (BoomedMap.containsKey(player)){
+            if (BoomedSet.contains(player)){
                 event.setCancelled(true);
             }
         }
@@ -32,14 +32,14 @@ public class PacketEventsPacketListener extends PacketListenerAbstract {
                 event.getPacketType() == PacketType.Play.Client.PLAYER_POSITION_AND_ROTATION ||
                 event.getPacketType() == PacketType.Play.Client.PLAYER_ROTATION ||
                 event.getPacketType() == PacketType.Play.Client.PLAYER_FLYING){
-            if (BoomedMap.containsKey(player)){
+            if (BoomedSet.contains(player)){
                 event.setCancelled(true);
             }
         }
         if (event.getPacketType() == PacketType.Play.Client.CHAT_ACK ||
                 event.getPacketType() == PacketType.Play.Client.CHAT_COMMAND || event.getPacketType() == PacketType.Play.Client.CHAT_MESSAGE) {
             //WrapperPlayServerChunkDataBulk chunkDataBulk = new WrapperPlayServerChunkDataBulk(event);
-            if (BoomedMap.containsKey(player)){
+            if (BoomedSet.contains(player)){
                 event.setCancelled(true);
             }
         }
@@ -50,7 +50,7 @@ public class PacketEventsPacketListener extends PacketListenerAbstract {
         event.getPacketType() == PacketType.Play.Client.HELD_ITEM_CHANGE ||
         event.getPacketType() == PacketType.Play.Client.PICK_ITEM ||
         event.getPacketType() == PacketType.Play.Client.EDIT_BOOK) {
-            if (BoomedMap.containsKey(player)){
+            if (BoomedSet.contains(player)){
                 event.setCancelled(true);
             }
         }
@@ -61,13 +61,13 @@ public class PacketEventsPacketListener extends PacketListenerAbstract {
         User user = event.getUser();
         if (event.getPacketType() == PacketType.Play.Server.KEEP_ALIVE) {
             //WrapperPlayServerKeepAlive keepAlive = new WrapperPlayServerKeepAlive(event);
-            if (BoomedMap.containsKey(player)) {
+            if (BoomedSet.contains(player)) {
                 event.setCancelled(true);
             }
         }
         if (event.getPacketType() == PacketType.Play.Server.MAP_CHUNK_BULK) {
             //WrapperPlayServerChunkDataBulk chunkDataBulk = new WrapperPlayServerChunkDataBulk(event);
-            if (BoomedMap.containsKey(player)){
+            if (BoomedSet.contains(player)){
                 event.setCancelled(true);
             }
         }
