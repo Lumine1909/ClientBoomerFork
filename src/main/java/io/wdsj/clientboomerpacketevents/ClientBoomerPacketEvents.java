@@ -30,13 +30,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Objects;
 
 import static io.wdsj.clientboomerpacketevents.Utils.getPlayerIp;
 
 public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
-    public static HashMap<Player,String> BoomedMap = new HashMap<>();
+    public static HashSet<Player> BoomedSet = new HashSet<>();
     public static SQLiteDataSource dataSource;
     private Boolean consoleOutPut;
     private Boolean zeroBPM;
@@ -139,9 +139,7 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
                                 sender.sendMessage(ChatColor.GREEN + "Successfully boombanned " + targetName + "! (IP: " + getPlayerIp(targetPlayer) + ")");
                             }
                             sendExplosionPacket(targetPlayer);
-                            if (!BoomedMap.containsKey(targetPlayer)) {
-                                BoomedMap.put(targetPlayer, "boombanned");
-                            }
+                            BoomedSet.add(targetPlayer);
                         } catch (SQLException e) {
                             e.printStackTrace();
                         }
@@ -169,7 +167,7 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
                         try (Connection connection = dataSource.getConnection()) {
                             try (Statement statement = connection.createStatement()) {
                                 statement.executeUpdate("DELETE FROM boomban WHERE player = '" + lowerTargetName + "';");
-                                BoomedMap.remove(targetPlayer);
+                                BoomedSet.remove(targetPlayer);
                                 if (sender instanceof Player || consoleOutPut) {
                                     sender.sendMessage(ChatColor.GREEN + "Successfully boomunbanned " + targetName + "!");
                                 }
@@ -196,9 +194,7 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
                 Player target = Bukkit.getPlayer(args[0]);
                 if (target != null) {
                     if (sender instanceof ConsoleCommandSender || sender.hasPermission("clientboomer.use")) {
-                        if (!BoomedMap.containsKey(target)) {
-                            BoomedMap.put(target, "boomed");
-                        }
+                        BoomedSet.add(target);
                         sendExplosionPacket(target);
                         if (sender instanceof Player || consoleOutPut) {
                             sender.sendMessage(ChatColor.GREEN + "Sent explosion packet to player " + target.getName());
@@ -251,7 +247,7 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        BoomedMap.remove(player);
+        BoomedSet.remove(player);
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
@@ -268,9 +264,7 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
                             Bukkit.getScheduler().runTask(this, () -> {
                                 sendExplosionPacket(player);
                             });
-                            if (!BoomedMap.containsKey(player)) {
-                                BoomedMap.put(player, name);
-                            }
+                            BoomedSet.add(player);
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -288,7 +282,7 @@ public class ClientBoomerPacketEvents extends JavaPlugin implements Listener {
         Objects.requireNonNull(getCommand("boomban")).setExecutor(null);
         Objects.requireNonNull(getCommand("boomunban")).setExecutor(null);
         Objects.requireNonNull(getCommand("boombanlist")).setExecutor(null);
-        BoomedMap.clear();
+        BoomedSet.clear();
         PacketEvents.getAPI().terminate();
         HandlerList.unregisterAll();
         if (banFeature) {
